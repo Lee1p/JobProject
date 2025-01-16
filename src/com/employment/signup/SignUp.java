@@ -1,6 +1,6 @@
 package com.employment.signup;
 
-import java.util.Scanner;
+import com.employment.dao.RegisterDAO;
 
 public class SignUp {
 	
@@ -23,7 +23,6 @@ public class SignUp {
 	}
 	
 	
-
 	public String getId() {
 		return id;
 	}
@@ -79,13 +78,6 @@ public class SignUp {
 				+ ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
 	}
 	
-	// 아이디 중복검사 메서드 추가
-    public boolean idVerification(String idInput) {
-        // 여기에 실제로 아이디 중복검사 로직을 구현해야 합니다.
-        // 예를 들어, 파일에서 기존 아이디 목록을 읽고, 중복된 아이디가 있는지 확인
-        return !id.equals(idInput); // 임시로 아이디가 동일하지 않으면 중복이 아님
-    }
 	
-
 
 }
