@@ -1,9 +1,12 @@
 package com.employment.signup;
 
+import java.io.File;
+
 import com.employment.dao.RegisterDAO;
 
 public class SignUp {
 	
+	private int pk; // 고유번호
 	private String id; // 아이디
 	private String password; // 비밀번호
 	private String name; //이름
@@ -12,8 +15,9 @@ public class SignUp {
 	private String phoneNumber; // 휴대폰 번호
 	
 	// 회원가입 생성자 
-	public SignUp(String id, String password, String name, String birthDate, String email, String phoneNumber) {
+	public SignUp(int pk, String id, String password, String name, String birthDate, String email, String phoneNumber) {
 		super();
+		this.pk = pk;
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -77,7 +81,17 @@ public class SignUp {
 		return "SignUp [id=" + id + ", password=" + password + ", name=" + name + ", birthDate=" + birthDate
 				+ ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
 	}
-	
+
+
+	public int getPk() {
+		return pk;
+	}
+
+
+	public void setPk(int pk) {
+		this.pk = pk;
+	}
+
 	
 
 }

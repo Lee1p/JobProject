@@ -13,8 +13,11 @@ public class RegisterDAO {
 	// 회원 정보를 저장할 ArrayList
 	private static ArrayList<SignUp> userList = new ArrayList<SignUp>();
 	
+	
 	// 회원 정보를 저장하는 메소드
 	public static void save(SignUp user) throws IOException {
+		
+		
 		// 1. 회원 정보를 userList에 추가
 		userList.add(user);
 		
@@ -24,7 +27,7 @@ public class RegisterDAO {
 		
 		try {
 			// 파일을 열거나 새로 생성
-			File file = new File("C:\\class\\code\\java\\Employment\\EmployMentData\\register.txt");
+			File file = new File("EmployMentData/register.txt");
 			fw = new FileWriter(file, true); 
 			bw = new BufferedWriter(fw);
 			
@@ -44,7 +47,9 @@ public class RegisterDAO {
 			}
 			if (fw != null) {
 				fw.close();
-			}
-		}
-	}
-}
+			} //finally
+		}// finally
+	} // save
+	
+	
+} // registerDao

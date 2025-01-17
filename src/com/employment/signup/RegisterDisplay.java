@@ -10,7 +10,7 @@ import com.employment.dao.RegisterDAO;
 public class RegisterDisplay {
 
     // 회원가입 폼
-    public static void registerDisplay() {
+    public static void registerDisplay() throws IOException {
         Scanner sc = new Scanner(System.in);
         
         boolean loop = true;
@@ -19,7 +19,7 @@ public class RegisterDisplay {
             System.out.println("========회원가입창입니다.========");
             System.out.print("아이디: ");
             String idInput = sc.nextLine();
-            System.out.print("비밀번호: ");
+            System.out.print("비밀번호:");
             String passwordInput = sc.nextLine();
             System.out.print("이름: ");
             String nameInput = sc.nextLine();
@@ -29,11 +29,10 @@ public class RegisterDisplay {
             String emailInput = sc.nextLine();
             System.out.print("휴대폰번호: ");
             String phoneInput = sc.nextLine();
-            
+           
             
             //입력값으로 SignUP 객체 생성            
-            SignUp newUser = new SignUp(idInput, passwordInput, nameInput, birthdateInput, emailInput, phoneInput);
-            
+            SignUp newUser = new SignUp(idInput, passwordInput, nameInput, birthdateInput, emailInput, phoneInput); // SignUp 클래스에 선언함 고유번호추가작업.
             
             System.out.println("회원가입이 완료되었습니다");
             
@@ -45,6 +44,7 @@ public class RegisterDisplay {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				System.out.println("회원 정보를 저장하는 중 오류가 발생했습니다.");
 			}
           
         } // while
