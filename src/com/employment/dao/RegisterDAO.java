@@ -1,7 +1,9 @@
 package com.employment.dao;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,5 +53,29 @@ public class RegisterDAO {
 		}// finally
 	} // save
 	
+	
+	// 중복 아이디를 확인하는 메소드
+	public static boolean isDuplicateId(String id) throws IOException {
+	    File file = new File("EmployMentData/register.txt");
+
+	    // 파일이 존재하지 않으면 중복될 일이 없으므로 false 반환
+	    if (!file.exists()) {
+	        return false;
+	    }
+
+	    // 파일 읽기
+	    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+	        String line;
+	        while ((line = br.readLine()) != null) {
+	            // 파일에서 한 줄씩 읽어서 쉼표(,)로 분리
+	            String[] userData = line.split(",");
+	            if (userData.length > 0 && userData[0].equals(id)) { // 첫 번째 요소는 아이디
+	                return true; // 중복된 아이디 발견
+	            }
+	        }
+	    }
+	    return false; // 중복된 아이디 없음
+	}
+
 	
 } // registerDao
