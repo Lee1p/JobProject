@@ -3,3 +3,5 @@ zzz,zzz,zzz,zzz,zzz,zzz
 aaaaa,12345,fff,123,zzz,zzz
 adsfsadf,12345,이재현,12345,123,123
 asdfg,12345,홍길동,120130,kor123@example.com,010-1111-1111
+asdfsd,12345,홍길동,120120,asdsafd@da.com,010-2222-2222
+adsfasr,12345,이재현,120110,asdasd@da.com,010-1234-1234

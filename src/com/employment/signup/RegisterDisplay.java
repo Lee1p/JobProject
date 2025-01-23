@@ -47,6 +47,7 @@ public class RegisterDisplay {
 
 			// 비밀번호 입력
 			while (true) {
+				
 				System.out.print("비밀번호: ");
 				passwordInput = sc.nextLine();
 
@@ -55,8 +56,24 @@ public class RegisterDisplay {
 					System.out.println("비밀번호는 5글자~15글자 사이로 입력해야 합니다.");
 					continue; // 비밀번호를 다시 입력받음
 				}
-
-				System.out.println("사용 가능한 비밀번호입니다.");
+				break;
+			}
+			
+			
+			while(true) {
+				
+				String confirmpassword = null;
+				
+				System.out.print("비밀번호확인:");
+				confirmpassword = sc.nextLine();
+				
+				
+				if(!confirmpassword.contains(passwordInput)) {
+						System.out.println("비밀번호가 일치하지 않습니다.");
+						continue;
+				}
+				
+				System.out.println("★비밀번호가 일치합니다.★");
 				break; // 비밀번호가 올바른 경우 반복문 종료
 			}
 
@@ -85,11 +102,11 @@ public class RegisterDisplay {
 			        continue;
 			    }
 
-			    // 연, 월, 일 추출
-			    int year = Integer.parseInt(birthdateInput.substring(0, 2)); // 연도 (앞 2자리)
+			    // 월, 일 추출
+
 			    int month = Integer.parseInt(birthdateInput.substring(2, 4)); // 월 (중간 2자리)
 			    int day = Integer.parseInt(birthdateInput.substring(4, 6)); // 일 (마지막 2자리)
-
+			    
 			    // 월 범위 확인
 			    if (month < 1 || month > 12) {
 			        System.out.println("유효하지 않은 월입니다. 월은 01~12 사이여야 합니다.");
@@ -104,7 +121,6 @@ public class RegisterDisplay {
 			    }
 
 			    // 모든 검증 통과
-			    System.out.println("유효한 생년월일입니다: " + birthdateInput);
 			    break; // 입력 반복 종료
 			}
 
@@ -118,11 +134,22 @@ public class RegisterDisplay {
 			        System.out.println("이메일 형식이 올바르지 않습니다. 예: abc123@example.com");
 			        continue; // 다시 이메일 입력받음
 			    }
-
-			    System.out.println("사용 가능한 이메일입니다.");
-			    break; // 유효한 이메일 입력 시 루프 종료
-			}
+			    
+			 // 중복 검사
+				try {
+					if (RegisterDAO.isDuplicateemail(emailInput)) {
+						System.out.println("이미 사용하고있는 이메일입니다.");
+						continue; // 중복이면 다시 입력받음
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("이메일 중복 확인 중 오류가 발생했습니다.");
+					continue;
+				}
 			
+			    System.out.println("사용 가능한 이메일입니다.");
+			    break;
+			}
 		
             // 휴대폰번호 입력 및 유효성 검사
             while (true) {
@@ -135,10 +162,20 @@ public class RegisterDisplay {
                     System.out.println("잘못된 휴대폰 번호 형식입니다. 예: 010-1234-5678");
                     continue; // 잘못된 형식이면 다시 입력받음
                 }
-
-                System.out.println("사용 가능한 휴대폰 번호입니다.");
-                break; // 유효한 휴대폰 번호 입력 시 루프 종료
-            }
+                
+             // 중복 검사
+				try {
+					if (RegisterDAO.isDuplicatePhoneNumber(phoneInput)) {
+						System.out.println("이미 회원가입한 폰번호입니다.");
+						continue; // 중복이면 다시 입력받음
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("폰번호 확인 중 오류가 발생했습니다.");
+					continue;
+				}
+			    break;
+			}
 
 
 			// 입력값으로 SignUp 객체 생성
