@@ -1,8 +1,5 @@
 package com.employment.signup;
 
-import java.io.File;
-
-import com.employment.dao.RegisterDAO;
 
 public class SignUp {
 	
