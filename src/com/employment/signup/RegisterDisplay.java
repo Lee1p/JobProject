@@ -3,6 +3,7 @@ package com.employment.signup;
 import java.io.IOException;
 import java.util.Scanner;
 import com.employment.dao.RegisterDAO;
+import com.employment.util.Util;
 import com.maindisplay.MainDisplay;
 
 public class RegisterDisplay {
@@ -27,7 +28,7 @@ public class RegisterDisplay {
 
 			// 중복 검사
 			try {
-				if (RegisterDAO.isDuplicateId(idInput)) {
+				if (Util.isDuplicateId(idInput)) {
 					System.out.println("중복된 아이디입니다. 다른 아이디를 입력하세요.");
 					continue; // 중복이면 다시 입력받음
 				}
@@ -135,7 +136,7 @@ public class RegisterDisplay {
 
 				// 중복 검사
 				try {
-					if (RegisterDAO.isDuplicateemail(emailInput)) {
+					if (Util.isDuplicateemail(emailInput)) {
 						System.out.println("이미 사용하고있는 이메일입니다.");
 						continue; // 중복이면 다시 입력받음
 					}
@@ -163,7 +164,7 @@ public class RegisterDisplay {
 
 				// 중복 검사
 				try {
-					if (RegisterDAO.isDuplicatePhoneNumber(phoneInput)) {
+					if (Util.isDuplicatePhoneNumber(phoneInput)) {
 						System.out.println("이미 회원가입한 폰번호입니다.");
 						continue; // 중복이면 다시 입력받음
 					}
